@@ -1,52 +1,46 @@
 /* =========================================
-   Apple Style Design System (Final)
+   Apple Style Design System (Final Clean Ver)
    ========================================= */
 :root {
-    --bg-color: #f5f5f7;        /* 애플 배경색 */
-    --card-bg: #ffffff;         /* 카드 배경 */
-    --text-main: #1d1d1f;       /* 메인 텍스트 (거의 검정) */
-    --text-sub: #86868b;        /* 서브 텍스트 (회색) */
-    --accent-color: #0071e3;    /* 애플 공식 블루 */
-    --accent-hover: #0077ed;    
-    --radius: 20px;             /* 둥근 모서리 */
+    --bg-color: #f5f5f7;
+    --card-bg: #ffffff;
+    --text-main: #1d1d1f;
+    --text-sub: #86868b;
+    --accent-color: #0071e3;
+    --accent-hover: #0077ed;
+    --error-color: #ff3b30;
+    --radius: 20px;
     --font-stack: "Inter", -apple-system, BlinkMacSystemFont, "San Francisco", "Segoe UI", Roboto, sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
 
 body {
     font-family: var(--font-stack);
     background-color: var(--bg-color);
     color: var(--text-main);
     line-height: 1.5;
-    -webkit-font-smoothing: antialiased; /* 맥에서 폰트 부드럽게 */
+    -webkit-font-smoothing: antialiased;
     letter-spacing: -0.02em; 
 }
 
-/* =========================================
-   1. Header (Hero Section)
-   ========================================= */
+/* 1. Header */
 .hero {
     height: 70vh;
-    background-color: #000; /* 아이폰 프로 소개 페이지 느낌 */
+    background-color: #000;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     text-align: center;
     color: white;
-    position: relative;
 }
 
 .hero-content {
     z-index: 2;
     max-width: 800px;
     padding: 0 20px;
-    animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1); /* 부드러운 등장 */
+    animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
 
 .hero h1 {
@@ -61,10 +55,8 @@ body {
     font-size: 1.5rem;
     color: #a1a1a6;
     margin-bottom: 40px;
-    font-weight: 400;
 }
 
-/* 네비게이션 버튼 (알약 모양) */
 .category-nav {
     display: flex;
     gap: 15px;
@@ -88,9 +80,7 @@ body {
     color: black;
 }
 
-/* =========================================
-   2. Main Content (Bento Grid)
-   ========================================= */
+/* 2. Main Content */
 main {
     max-width: 1200px;
     margin: 0 auto;
@@ -107,12 +97,10 @@ main {
 
 .card-container {
     display: grid;
-    /* 반응형: 화면 크기에 맞춰 카드 자동 배치 */
     grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
     gap: 25px;
 }
 
-/* 카드 디자인 */
 .club-card {
     background: var(--card-bg);
     border-radius: var(--radius);
@@ -120,8 +108,6 @@ main {
     box-shadow: 0 4px 10px rgba(0,0,0,0.02); 
     transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
     cursor: pointer;
-    position: relative;
-    border: none;
 }
 
 .club-card:hover {
@@ -142,13 +128,9 @@ main {
     transition: transform 0.6s ease;
 }
 
-.club-card:hover .card-img-wrapper img {
-    transform: scale(1.05);
-}
+.club-card:hover .card-img-wrapper img { transform: scale(1.05); }
 
-.card-text {
-    padding: 25px;
-}
+.card-text { padding: 25px; }
 
 .card-text h3 {
     font-size: 1.2rem;
@@ -163,22 +145,21 @@ main {
     line-height: 1.4;
     display: -webkit-box;
     -webkit-line-clamp: 2;
+    line-clamp: 2; /* 경고 해결됨 */
     -webkit-box-orient: vertical;
     overflow: hidden; 
 }
 
-/* =========================================
-   3. Liquid Glass Modal (수정된 부분)
-   ========================================= */
+/* 3. Modal & Form */
 .modal-overlay {
-    display: none; /* 기본 숨김 */
+    display: none;
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(15px); /* 배경 강한 블러 */
+    backdrop-filter: blur(15px);
     z-index: 2000;
     justify-content: center;
     align-items: center;
@@ -186,13 +167,9 @@ main {
     transition: opacity 0.3s ease;
 }
 
-.modal-overlay.show {
-    display: flex;
-    opacity: 1;
-}
+.modal-overlay.show { display: flex; opacity: 1; }
 
 .modal-content {
-    /* 리퀴드 글래스 효과 */
     background: rgba(255, 255, 255, 0.75);
     border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
@@ -203,13 +180,11 @@ main {
     max-width: 550px;
     color: var(--text-main);
     transform: scale(0.9);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); /* 텐션 효과 */
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
 }
 
-.modal-overlay.show .modal-content {
-    transform: scale(1);
-}
+.modal-overlay.show .modal-content { transform: scale(1); }
 
 .modal-content h2 {
     font-size: 2.2rem;
@@ -218,6 +193,7 @@ main {
     text-align: center;
     background: linear-gradient(135deg, #1d1d1f, #0071e3);
     -webkit-background-clip: text;
+    background-clip: text; /* 경고 해결됨 */
     -webkit-text-fill-color: transparent;
 }
 
@@ -228,141 +204,17 @@ main {
     font-size: 1rem;
 }
 
-/* 폼 그리드 정렬 (정갈한 배열) */
-#application-form {
-    display: grid;
-    grid-template-columns: 80px 1fr; /* 라벨(80px) + 입력창(나머지) */
-    gap: 20px;
-    align-items: center;
-}
-
-.form-group {
-    display: contents; /* 폼 그룹 div를 무시하고 내부 요소를 그리드에 배치 */
-}
-
-.form-group label {
-    text-align: right;
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--text-main);
-}
-
-.form-group input,
-.form-group textarea {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 12px;
-    padding: 12px 16px;
-    font-size: 1rem;
-    font-family: var(--font-stack);
-    transition: all 0.2s ease;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
-}
-
-/* 텍스트 박스만 줄바꿈 처리 */
-.form-group:nth-of-type(4) label {
-    align-self: start; /* 라벨 상단 정렬 */
-    margin-top: 12px;
-}
-
-textarea {
-    resize: none;
-    height: 100px;
-}
-
-.form-group input:focus,
-.form-group textarea:focus {
-    background: rgba(255, 255, 255, 0.9);
-    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.3);
-    outline: none;
-}
-
-/* 신청 버튼 (전체 너비) */
-.submit-btn {
-    grid-column: 1 / -1; /* 전체 한 줄 차지 */
-    margin-top: 20px;
-    padding: 16px;
-    border-radius: 18px;
-    background: var(--accent-color);
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 8px 16px rgba(0, 113, 227, 0.25);
-    transition: all 0.3s ease;
-}
-
-.submit-btn:hover {
-    background: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(0, 113, 227, 0.35);
-}
-
-/* 닫기 버튼 */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.05);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: #888;
-    font-size: 1.2rem;
-    transition: all 0.2s;
-}
-
-.close-btn:hover {
-    background: rgba(0,0,0,0.1);
-    color: #333;
-}
-
-/* =========================================
-   4. Footer & Animation
-   ========================================= */
-footer {
-    background-color: var(--bg-color);
-    color: var(--text-sub);
-    padding: 60px 20px;
-    border-top: 1px solid #d2d2d7;
-    text-align: center;
-    font-size: 0.8rem;
-    margin-top: 50px;
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-/* 모바일 대응 */
-@media (max-width: 768px) {
-    .hero h1 { font-size: 2.5rem; }
-    #application-form { grid-template-columns: 1fr; } /* 모바일은 1열로 */
-    .form-group label { text-align: left; margin-bottom: 5px; }
-}
-/* =========================================
-   Apple Style Form & Validation (Updated)
-   ========================================= */
-
-/* 폼 레이아웃 재정의 (Grid) */
+/* 폼 스타일 */
 #application-form {
     display: flex;
     flex-direction: column;
     gap: 20px;
 }
 
-/* 각 줄(Row) 설정 */
 .form-row {
     display: grid;
-    grid-template-columns: 80px 1fr; /* 라벨(80px) + 입력창(나머지) */
-    align-items: start; /* 위쪽 정렬 */
+    grid-template-columns: 80px 1fr;
+    align-items: start;
     gap: 15px;
 }
 
@@ -371,10 +223,9 @@ footer {
     font-weight: 600;
     font-size: 1rem;
     color: var(--text-main);
-    padding-top: 12px; /* 인풋 텍스트와 높이 맞춤 */
+    padding-top: 12px;
 }
 
-/* 입력창을 감싸는 래퍼 (에러 메시지 포함용) */
 .input-wrapper {
     display: flex;
     flex-direction: column;
@@ -394,44 +245,91 @@ footer {
     box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
 }
 
-.form-row textarea {
-    resize: none;
-    height: 100px;
-}
+.form-row textarea { resize: none; height: 100px; }
 
-/* 포커스 효과 */
-.form-row input:focus,
-.form-row textarea:focus {
+/* 빈 규칙 삭제 완료 */
+
+.form-row input:focus, .form-row textarea:focus {
     background: rgba(255, 255, 255, 0.9);
     border-color: var(--accent-color);
     box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
     outline: none;
 }
 
-/* 🚨 [핵심] 에러 상태 디자인 (애플 스타일 레드) */
+/* 에러 스타일 */
 .input-error {
-    border-color: #ff3b30 !important; /* 애플 시스템 레드 */
+    border-color: var(--error-color) !important;
     background-color: #fff2f2 !important;
-    animation: shake 0.4s ease-in-out; /* 흔들림 효과 */
+    animation: shake 0.4s ease-in-out;
 }
 
-/* 에러 메시지 텍스트 (평소엔 숨김) */
 .error-msg {
-    color: #ff3b30;
+    color: var(--error-color);
     font-size: 0.85rem;
     margin-top: 6px;
     margin-left: 5px;
-    display: none; /* 기본 숨김 */
+    display: none;
     font-weight: 500;
 }
 
-/* 에러가 났을 때 메시지 보이기 */
-.input-wrapper.error .error-msg {
-    display: block;
-    animation: fadeIn 0.3s ease;
+.input-wrapper.error .error-msg { display: block; animation: fadeIn 0.3s ease; }
+
+.submit-btn {
+    margin-top: 20px;
+    padding: 16px;
+    border-radius: 18px;
+    background: var(--accent-color);
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 8px 16px rgba(0, 113, 227, 0.25);
+    transition: all 0.3s ease;
+    width: 100%;
 }
 
-/* 흔들리는 애니메이션 (틀렸을 때) */
+.submit-btn:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 24px rgba(0, 113, 227, 0.35);
+}
+
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.05);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    color: #888;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+}
+
+.close-btn:hover { background: rgba(0,0,0,0.1); color: #333; }
+
+/* Footer & Animation */
+footer {
+    background-color: var(--bg-color);
+    color: var(--text-sub);
+    padding: 60px 20px;
+    border-top: 1px solid #d2d2d7;
+    text-align: center;
+    font-size: 0.8rem;
+    margin-top: 50px;
+}
+
+@keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
 @keyframes shake {
     0%, 100% { transform: translateX(0); }
     25% { transform: translateX(-5px); }
@@ -441,4 +339,10 @@ footer {
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5rem; }
+    .form-row { grid-template-columns: 1fr; gap: 5px; }
+    .form-row label { text-align: left; }
 }
