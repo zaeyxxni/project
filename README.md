@@ -63,7 +63,7 @@
 ## 📂 폴더 구조 (Directory Structure)
 
 ```
-project-root/
+project/
 │
 ├── index.html          # 메인 페이지
 ├── style.css           # 사이트 전체 스타일
