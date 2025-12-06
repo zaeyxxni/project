@@ -1,5 +1,5 @@
 /* =========================================
-   Apple Style Design System (Final Clean Ver)
+   Apple Style Design System (Final Clean)
    ========================================= */
 :root {
     --bg-color: #f5f5f7;
@@ -21,328 +21,165 @@ body {
     color: var(--text-main);
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
-    letter-spacing: -0.02em; 
+    letter-spacing: -0.02em;
+    /* 🛠️ [해결 1] 상단바 높이만큼 여백을 줘서 내용이 겹치지 않게 함 */
+    padding-top: 60px;
 }
 
-/* 1. Header */
+/* 1. Header & Nav */
+.global-nav {
+    position: fixed; top: 0; left: 0; width: 100%; height: 60px;
+    z-index: 1000; background-color: rgba(255, 255, 255, 0.7);
+    backdrop-filter: blur(20px); border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.nav-content {
+    max-width: 1200px; margin: 0 auto; height: 100%;
+    display: flex; justify-content: space-between; align-items: center; padding: 0 20px;
+}
+
+.nav-logo { font-weight: 700; font-size: 1.1rem; color: var(--text-main); }
+
+.nav-links a {
+    text-decoration: none; color: var(--text-sub); font-size: 0.9rem;
+    margin-left: 20px; transition: color 0.2s; font-weight: 500;
+}
+.nav-links a:hover { color: var(--accent-color); }
+
 .hero {
-    height: 70vh;
-    background-color: #000;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    color: white;
+    height: 50vh; /* 높이 적절히 조정 */
+    background-color: #004C86;
+    display: flex; flex-direction: column; justify-content: center; align-items: center;
+    text-align: center; color: white;
 }
-
 .hero-content {
-    z-index: 2;
-    max-width: 800px;
-    padding: 0 20px;
+    z-index: 2; max-width: 800px; padding: 0 20px;
     animation: fadeUp 1s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
+.hero h1 { font-size: 3.5rem; font-weight: 700; margin-bottom: 10px; line-height: 1.1; }
+.hero p { font-size: 1.2rem; color: #a1a1a6; font-weight: 400; }
 
-.hero h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    margin-bottom: 10px;
-    line-height: 1.1;
-    letter-spacing: -0.03em;
-}
-
-.hero p {
-    font-size: 1.5rem;
-    color: #a1a1a6;
-    margin-bottom: 40px;
-}
-
-.category-nav {
-    display: flex;
-    gap: 15px;
-    flex-wrap: wrap;
-    justify-content: center;
-}
-
-.category-nav a {
-    text-decoration: none;
-    color: white;
-    font-size: 0.95rem;
-    padding: 12px 24px;
-    border-radius: 30px;
-    background-color: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(10px);
-    transition: all 0.3s ease;
-}
-
-.category-nav a:hover {
-    background-color: white;
-    color: black;
-}
-
-/* 2. Main Content */
+/* 2. Main Content (간격 조정) */
 main {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 80px 20px;
+    max-width: 1200px; margin: 0 auto; padding: 60px 20px;
+}
+
+/* 🛠️ [해결 2] 분과별 섹션 간격 일정하게 */
+.category-section {
+    margin-bottom: 100px; /* 섹션 사이 간격 넓게 */
+    /* 링크 클릭 시 헤더에 가려지지 않게 위치 조정 */
+    scroll-margin-top: 80px; 
 }
 
 .section-title {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 40px;
-    color: var(--text-main);
-    letter-spacing: -0.02em;
+    font-size: 2.5rem; font-weight: 700; margin-bottom: 40px;
+    color: var(--text-main); letter-spacing: -0.02em;
+    padding-bottom: 10px; /* 타이틀 아래 약간의 여백 */
 }
 
 .card-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
-    gap: 25px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px;
 }
 
 .club-card {
-    background: var(--card-bg);
-    border-radius: var(--radius);
-    overflow: hidden;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.02); 
-    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
-    cursor: pointer;
+    background: var(--card-bg); border-radius: var(--radius); overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1); cursor: pointer;
 }
+.club-card:hover { transform: scale(1.02); box-shadow: 0 20px 40px rgba(0,0,0,0.12); z-index: 10; }
 
-.club-card:hover {
-    transform: scale(1.02); 
-    box-shadow: 0 20px 40px rgba(0,0,0,0.12);
-    z-index: 10;
-}
-
-.card-img-wrapper {
-    height: 250px;
-    overflow: hidden;
-}
-
-.card-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.6s ease;
-}
-
+.card-img-wrapper { height: 250px; overflow: hidden; }
+.card-img-wrapper img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease; }
 .club-card:hover .card-img-wrapper img { transform: scale(1.05); }
 
 .card-text { padding: 25px; }
-
-.card-text h3 {
-    font-size: 1.2rem;
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--text-main);
-}
-
+.card-text h3 { font-size: 1.2rem; font-weight: 600; margin-bottom: 8px; color: var(--text-main); }
 .card-text p {
-    font-size: 0.95rem;
-    color: var(--text-sub);
-    line-height: 1.4;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    line-clamp: 2; /* 경고 해결됨 */
-    -webkit-box-orient: vertical;
-    overflow: hidden; 
+    font-size: 0.95rem; color: var(--text-sub); line-height: 1.4;
+    display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; /* 표준 속성 추가 */
+    -webkit-box-orient: vertical; overflow: hidden; 
 }
 
 /* 3. Modal & Form */
 .modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.3);
-    backdrop-filter: blur(15px);
-    z-index: 2000;
-    justify-content: center;
-    align-items: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
+    display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.3); backdrop-filter: blur(15px);
+    z-index: 2000; justify-content: center; align-items: center;
+    opacity: 0; transition: opacity 0.3s ease;
 }
-
 .modal-overlay.show { display: flex; opacity: 1; }
 
 .modal-content {
-    background: rgba(255, 255, 255, 0.75);
-    border: 1px solid rgba(255, 255, 255, 0.5);
+    background: rgba(255, 255, 255, 0.75); border: 1px solid rgba(255, 255, 255, 0.5);
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.15), inset 0 0 0 1px rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(25px) saturate(180%);
-    border-radius: 30px;
-    padding: 50px 40px;
-    width: 90%;
-    max-width: 550px;
-    color: var(--text-main);
-    transform: scale(0.9);
-    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-    position: relative;
+    backdrop-filter: blur(25px) saturate(180%); border-radius: 30px;
+    padding: 50px 40px; width: 90%; max-width: 550px;
+    color: var(--text-main); transform: scale(0.9);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1); position: relative;
 }
-
 .modal-overlay.show .modal-content { transform: scale(1); }
 
 .modal-content h2 {
-    font-size: 2.2rem;
-    font-weight: 800;
-    margin-bottom: 10px;
-    text-align: center;
+    font-size: 2.2rem; font-weight: 800; margin-bottom: 10px; text-align: center;
     background: linear-gradient(135deg, #1d1d1f, #0071e3);
-    -webkit-background-clip: text;
-    background-clip: text; /* 경고 해결됨 */
+    -webkit-background-clip: text; background-clip: text; /* 표준 속성 추가 */
     -webkit-text-fill-color: transparent;
 }
+.modal-desc { text-align: center; color: var(--text-sub); margin-bottom: 40px; font-size: 1rem; }
 
-.modal-desc {
-    text-align: center;
-    color: var(--text-sub);
-    margin-bottom: 40px;
-    font-size: 1rem;
+#application-form { display: flex; flex-direction: column; gap: 20px; }
+.form-row { display: grid; grid-template-columns: 80px 1fr; align-items: start; gap: 15px; }
+.form-row label { text-align: right; font-weight: 600; font-size: 1rem; color: var(--text-main); padding-top: 12px; }
+.input-wrapper { display: flex; flex-direction: column; width: 100%; }
+.form-row input, .form-row textarea {
+    width: 100%; background: rgba(255, 255, 255, 0.5); border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px; padding: 12px 16px; font-size: 1rem;
+    font-family: var(--font-stack); transition: all 0.2s ease;
 }
-
-/* 폼 스타일 */
-#application-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.form-row {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    align-items: start;
-    gap: 15px;
-}
-
-.form-row label {
-    text-align: right;
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--text-main);
-    padding-top: 12px;
-}
-
-.input-wrapper {
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-}
-
-.form-row input,
-.form-row textarea {
-    width: 100%;
-    background: rgba(255, 255, 255, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 12px;
-    padding: 12px 16px;
-    font-size: 1rem;
-    font-family: var(--font-stack);
-    transition: all 0.2s ease;
-    box-shadow: inset 0 1px 2px rgba(0,0,0,0.03);
-}
-
 .form-row textarea { resize: none; height: 100px; }
-
-/* 빈 규칙 삭제 완료 */
-
 .form-row input:focus, .form-row textarea:focus {
-    background: rgba(255, 255, 255, 0.9);
-    border-color: var(--accent-color);
-    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
-    outline: none;
+    background: rgba(255, 255, 255, 0.9); border-color: var(--accent-color);
+    box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2); outline: none;
 }
-
-/* 에러 스타일 */
-.input-error {
-    border-color: var(--error-color) !important;
-    background-color: #fff2f2 !important;
-    animation: shake 0.4s ease-in-out;
-}
-
-.error-msg {
-    color: var(--error-color);
-    font-size: 0.85rem;
-    margin-top: 6px;
-    margin-left: 5px;
-    display: none;
-    font-weight: 500;
-}
-
+.input-error { border-color: var(--error-color) !important; background-color: #fff2f2 !important; animation: shake 0.4s ease-in-out; }
+.error-msg { color: var(--error-color); font-size: 0.85rem; margin-top: 6px; margin-left: 5px; display: none; font-weight: 500; }
 .input-wrapper.error .error-msg { display: block; animation: fadeIn 0.3s ease; }
 
 .submit-btn {
-    margin-top: 20px;
-    padding: 16px;
-    border-radius: 18px;
-    background: var(--accent-color);
-    color: white;
-    font-size: 1.1rem;
-    font-weight: 600;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 8px 16px rgba(0, 113, 227, 0.25);
-    transition: all 0.3s ease;
-    width: 100%;
+    margin-top: 20px; padding: 16px; border-radius: 18px; background: var(--accent-color);
+    color: white; font-size: 1.1rem; font-weight: 600; border: none; cursor: pointer; width: 100%;
+    box-shadow: 0 8px 16px rgba(0, 113, 227, 0.25); transition: all 0.3s ease;
 }
-
-.submit-btn:hover {
-    background: var(--accent-hover);
-    transform: translateY(-2px);
-    box-shadow: 0 12px 24px rgba(0, 113, 227, 0.35);
-}
-
+.submit-btn:hover { background: var(--accent-hover); transform: translateY(-2px); box-shadow: 0 12px 24px rgba(0, 113, 227, 0.35); }
 .close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background: rgba(0,0,0,0.05);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    color: #888;
-    font-size: 1.2rem;
-    transition: all 0.2s;
+    position: absolute; top: 20px; right: 20px; width: 32px; height: 32px; border-radius: 50%;
+    background: rgba(0,0,0,0.05); display: flex; justify-content: center; align-items: center;
+    cursor: pointer; color: #888; font-size: 1.2rem; transition: all 0.2s;
 }
-
 .close-btn:hover { background: rgba(0,0,0,0.1); color: #333; }
 
-/* Footer & Animation */
+/* 4. Footer & Animation */
 footer {
-    background-color: var(--bg-color);
-    color: var(--text-sub);
-    padding: 60px 20px;
-    border-top: 1px solid #d2d2d7;
-    text-align: center;
-    font-size: 0.8rem;
-    margin-top: 50px;
+    background-color: var(--bg-color); color: var(--text-sub);
+    padding: 60px 20px; border-top: 1px solid #d2d2d7;
+    text-align: center; font-size: 0.8rem; margin-top: 50px;
 }
 
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+@keyframes fadeUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(-5px); } to { opacity: 1; transform: translateY(0); } }
 
-@keyframes shake {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-5px); }
-    75% { transform: translateX(5px); }
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: translateY(-5px); }
-    to { opacity: 1; transform: translateY(0); }
-}
+/* 스크롤 등장 효과 */
+.scroll-reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s cubic-bezier(0.165, 0.84, 0.44, 1); }
+.scroll-reveal.active { opacity: 1; transform: translateY(0); }
+.club-card:nth-child(1) { transition-delay: 0.0s; }
+.club-card:nth-child(2) { transition-delay: 0.1s; }
+.club-card:nth-child(3) { transition-delay: 0.2s; }
+.club-card:nth-child(4) { transition-delay: 0.3s; }
 
 @media (max-width: 768px) {
     .hero h1 { font-size: 2.5rem; }
     .form-row { grid-template-columns: 1fr; gap: 5px; }
     .form-row label { text-align: left; }
+    .nav-links a { margin-left: 10px; font-size: 0.8rem; }
 }
