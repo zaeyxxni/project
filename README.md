@@ -92,6 +92,6 @@ project/
 
 ## 사용한 AI 도구 출처
 
-- Google Gemini (모델: Gemini 3.0 / Advanced)
+- Google Gemini (모델: Gemini 3.0 pro)
 - 사용 목적: 코드 설명, 구현 방향 제안, 리팩터링 아이디어 참고
 
