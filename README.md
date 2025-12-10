@@ -1,4 +1,4 @@
-## 🏫 2025 Hanyang Univ. ERICA Club Festival Website
+## 🏫 2026 Hanyang Univ. ERICA Club Festival Website
 
 > **"당신의 대학 생활을 빛내줄 최고의 동아리를 찾아보세요!"** > 한양대학교 ERICA 캠퍼스의 다양한 중앙 동아리를 소개하고, 가입 신청까지 한 번에 할 수 있는 웹 플랫폼입니다.
 
@@ -6,7 +6,7 @@
 
 ## 프로젝트 개요
 * **과목명:** 2025-2 오픈소스 개발과 활용
-* **개발 기간:** 2025.12.03 ~ 2025.12.05
+* **개발 기간:** 2025.12.03 ~ 2025.12.10
 * **배포 URL:** https://zaeyxxni.github.io/project/
 
 ---
